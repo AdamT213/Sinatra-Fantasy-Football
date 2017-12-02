@@ -1,0 +1,4 @@
+<% @user.leagues.each do |league| %>
+  <p><%= league.name %></p>
+  <a href= "/leagues/<%=league.id%>">View League Details</a>
+<% end %>
