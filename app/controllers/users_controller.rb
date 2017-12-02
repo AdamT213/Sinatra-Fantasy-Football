@@ -9,8 +9,13 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(params)
-    @user.save
-    redirect to '/leagues'
+    if (params[:username]).empty? || (params[:email]).empty? || (params[:password]).empty?
+      redirect to '/signup'
+    else
+      @user = User.create(params)
+      @user.save
+      session[:user_id] = @user.id
+      redirect to '/leagues'
+    end
   end
 end
