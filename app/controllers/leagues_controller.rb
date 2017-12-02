@@ -39,6 +39,7 @@ class LeaguesController < ApplicationController
         redirect to '/leagues'
       end
     else
-      erb: index
+      erb :index
     end
   end
+end
