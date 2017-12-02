@@ -9,4 +9,4 @@ end
 use Rack::MethodOverride
 run ApplicationController
 use UsersController
-Use LeaguesController
+use LeaguesController
