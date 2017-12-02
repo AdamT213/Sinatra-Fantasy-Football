@@ -16,6 +16,7 @@ class LeaguesController < ApplicationController
   post '/leagues' do
     if !params[:name].empty?
       @league = League.create(params)
+      @league.manager_id = current_user.id
       @league.save
       redirect to "/leagues/#{@league.id}"
     else
