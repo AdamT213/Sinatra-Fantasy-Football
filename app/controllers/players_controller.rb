@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+
   get '/players/new' do
     if is_logged_in?
       erb :'/players/create_player'
@@ -7,16 +8,16 @@ class PlayersController < ApplicationController
     end
   end
 
-  # post '/teams' do
-  #   if !params[:name].empty?
-  #     @team = Team.create(params)
-  #     @team.save
-  #     redirect to "/teams/#{@team.id}"
-  #   else
-  #     redirect to '/teams/new'
-  #   end
-  # end
-  #
+  post '/players' do
+    if !params[:name].empty? && !params[:position].empty? && !params[:status].empty?
+      @player = Player.create(params)
+      @player.save
+      redirect to "/teams/#{@team.id}"
+    else
+      redirect to '/players/new'
+    end
+  end
+
   # get '/teams/:id' do
   #   @team = Team.find_by_id(params[:id])
   #   erb :'/teams/show_team'
