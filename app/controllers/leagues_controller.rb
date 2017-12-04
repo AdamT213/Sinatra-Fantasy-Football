@@ -4,7 +4,7 @@ class LeaguesController < ApplicationController
     if is_logged_in?
       erb :'/leagues/create_league'
     else
-      redirect to '/login'
+      erb: index
     end
   end
 
