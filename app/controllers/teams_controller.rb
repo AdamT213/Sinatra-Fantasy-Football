@@ -2,7 +2,11 @@ class TeamsController < ApplicationController
 
   get '/teams/new' do
     if is_logged_in?
-      erb :'/teams/create_team'
+      if !@league.users.include?(current_user)
+        erb :'/teams/create_team'
+      else
+        redirect to "/teams/#{@team.id}"
+      end
     else
       erb :index
     end
