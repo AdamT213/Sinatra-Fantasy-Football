@@ -11,7 +11,6 @@ class TeamsController < ApplicationController
   post '/teams' do
     if !params[:name].empty?
       @team = Team.create(params)
-      @team.manager_id = current_user.id
       @team.save
       redirect to "/teams/#{@team.id}"
     else
@@ -19,10 +18,10 @@ class TeamsController < ApplicationController
     end
   end
 
-#   get '/leagues/:id' do
-#     @league = League.find_by_id(params[:id])
-#     erb :'/leagues/show_league'
-#   end
+  get '/teams/:id' do
+    @team = Team.find_by_id(params[:id])
+    erb :'/teams/show_team'
+  end
 #
 #   delete '/leagues/:id/delete' do
 #     if is_logged_in?
