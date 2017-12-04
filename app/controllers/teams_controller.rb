@@ -22,18 +22,19 @@ class TeamsController < ApplicationController
     @team = Team.find_by_id(params[:id])
     erb :'/teams/show_team'
   end
-#
-#   delete '/leagues/:id/delete' do
-#     if is_logged_in?
-#       @league = League.find_by_id(params[:id])
-#       if @league.manager_id == current_user.id
-#         @league.delete
-#         redirect to '/leagues'
-#       else
-#         redirect to '/leagues'
-#       end
-#     else
-#       erb :index
-#     end
-#   end
+
+  delete '/teams/:id/delete' do
+    if is_logged_in?
+      @team = Team.find_by_id(params[:id])
+      if @team.user.id == current_user.id
+        @team.delete
+        @team.league.users.delete(current_user)
+        redirect to '/leagues'
+      else
+        redirect to '/leagues'
+      end
+    else
+      erb :index
+    end
+  end
 end
