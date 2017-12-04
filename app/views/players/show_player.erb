@@ -2,4 +2,9 @@
 <h3><%= @player.position %></h3>
 <h3><% %= @player.status %></h3>
 
-<a href= "/players/drop_player"> Drop Player from Your Team </a>
+<br></br>
+
+<form action= '/players/<%= @player.id %>/delete' method= "POST">
+  <input name="_method" type="hidden" value="delete">
+  <input type= "submit" value= "Drop Player">
+</form>
