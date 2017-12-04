@@ -1,7 +1,7 @@
 <h1> Welcome To Sinatra Fantasy Football. Here are all the currently active leagues!</h1>
+<a href= "leagues/new"> Don't see a league you like? Make one! </a>
 <% @leagues.each do |league| %>
   <h3><%= league.name %></h3>
   <a href= "leagues/<%=league.id%>"> View League Details </a>
 <% end %>
 <br></br>
-<a href= "leagues/new"> Don't see a league you like? Make one! </a>
