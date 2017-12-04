@@ -1,4 +1,12 @@
 <h1><%= @team.name %></h1>
+<label> Roster </label>
+<% @team.players.each do |player|%>
+  <ul>
+    <li><%= player.name %></li>
+    <li><% player.position %></li>
+    <li><% player.status %></li>
+  </ul>
+<%end%>
 <a href= "/players/create_player"> Add Players to Your Team</a>
 
 <br></br>
