@@ -1,6 +1,11 @@
 <h1><%= @league.name %></h1>
 <a href= "/teams/create_team"> Join League</a>
-
+<br></br>
+<label> Standings: </label>
+  <% @league.teams.sort_by(wins).each do |team| %>
+    <h2><%= team.name %></h2>
+    <h3><%= team.wins - team.losses %></h3>
+  <% end %>
 <br></br>
 
 <form action= '/leagues/<%= @league.id %>/delete' method= "POST">
