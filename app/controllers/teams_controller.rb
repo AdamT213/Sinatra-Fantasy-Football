@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
       if !current_league.users.include?(current_user)
         erb :'/teams/create_team'
       else
-        redirect to "/teams/#{@team.id}"
+        redirect to "/leagues/#{current_league.id}"
       end
     else
       erb :index
