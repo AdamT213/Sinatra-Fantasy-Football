@@ -9,9 +9,14 @@
     <% else %>
       <li><%= "Injured" %></li>
     <% end %>
+    <li><a href= "/players/<%= player.id% >"> View player profile </a></li>
   </ul>
 <%end%>
 <a href= "/players/new"> Add Players to Your Team </a>
+
+<br></br>
+
+<a href= "/leagues/#{current_league.id}"> View league homepage </a>
 
 <br></br>
 
