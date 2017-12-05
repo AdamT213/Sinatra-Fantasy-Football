@@ -3,8 +3,11 @@
 <% @team.players.each do |player|%>
   <ul>
     <li><%= player.name %></li>
-    <li><% player.position %></li>
-    <li><% player.status %></li>
+    <li><%= player.position %></li>
+    <% if player.status == true %>
+      <li><%= "Active" %></li>
+    <% else %>
+      <li><%= "Injured" %></li>
   </ul>
 <%end%>
 <a href= "/players/new"> Add Players to Your Team </a>
