@@ -2,7 +2,7 @@
 <a href= "/teams/create_team"> Join League</a>
 <br></br>
 <label> Standings: </label>
-  <% @league.teams.sort_by(wins).each do |team| %>
+  <% @league.teams.each do |team| %>
     <h2><%= team.name %></h2>
     <h3><%= team.wins - team.losses %></h3>
   <% end %>
