@@ -6,6 +6,7 @@ class GamesController < ApplicationController
         erb :'/games/create_game'
       else
         redirect to '/leagues'
+      end
     else
       erb :index
     end
