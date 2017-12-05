@@ -18,6 +18,7 @@ class LeaguesController < ApplicationController
       @league = League.create(params)
       @league.manager_id = current_user.id
       @league.save
+      session[:league_id] = @league.id
       redirect to "/leagues/#{@league.id}"
     else
       redirect to '/leagues/new'

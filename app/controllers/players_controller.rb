@@ -12,11 +12,12 @@ class PlayersController < ApplicationController
     if !params[:name].empty? && !params[:position].empty? && !params[:status].empty?
       @player = Player.create(params)
       @player.save
-      redirect to "/teams/#{@team.id}"
+      current_team.players << @player
+      redirect to "/teams/#{current_team.id}"
     else
       redirect to '/players/new'
     end
-  end 
+  end
 
   get '/players/:id' do
     @player = Player.find_by_id(params[:id])
@@ -28,9 +29,9 @@ class PlayersController < ApplicationController
       @player = Player.find_by_id(params[:id])
       if @player.user.id == current_user.id
         @player.delete
-        redirect to "/teams/#{@team.id}"
+        redirect to "/teams/#{current_team.id}"
       else
-        redirect to "/teams/#{@team.id}"
+        redirect to "/teams/#{current_team.id}"
       end
     else
       erb :index

@@ -17,6 +17,14 @@ class ApplicationController < Sinatra::Base
   def is_logged_in?
     !!current_user
   end
+
+  def current_league
+    @current_league ||=  League.find_by(id: session[:league_id]) if session[:league_id]
+  end
+
+  def current_team
+    @current_team ||=  Team.find_by(id: session[:team_id]) if session[:team_id]
+  end
 end
 
   get '/' do

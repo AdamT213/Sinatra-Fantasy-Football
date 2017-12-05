@@ -16,6 +16,8 @@ class TeamsController < ApplicationController
     if !params[:name].empty?
       @team = Team.create(params)
       @team.save
+      session[:team_id] = @team.id
+      current_league.teams << @team
       redirect to "/teams/#{@team.id}"
     else
       redirect to '/teams/new'
