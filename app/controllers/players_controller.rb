@@ -16,25 +16,24 @@ class PlayersController < ApplicationController
     else
       redirect to '/players/new'
     end
+  end 
+
+  get '/players/:id' do
+    @player = Player.find_by_id(params[:id])
+    erb :'/players/show_player'
   end
 
-  # get '/teams/:id' do
-  #   @team = Team.find_by_id(params[:id])
-  #   erb :'/teams/show_team'
-  # end
-  #
-  # delete '/teams/:id/delete' do
-  #   if is_logged_in?
-  #     @team = Team.find_by_id(params[:id])
-  #     if @team.user.id == current_user.id
-  #       @team.delete
-  #       @team.league.users.delete(current_user)
-  #       redirect to '/leagues'
-  #     else
-  #       redirect to '/leagues'
-  #     end
-  #   else
-  #     erb :index
-  #   end
-  # end
+  delete '/players/:id/delete' do
+    if is_logged_in?
+      @player = Player.find_by_id(params[:id])
+      if @player.user.id == current_user.id
+        @player.delete
+        redirect to "/teams/#{@team.id}"
+      else
+        redirect to "/teams/#{@team.id}"
+      end
+    else
+      erb :index
+    end
+  end
 end
