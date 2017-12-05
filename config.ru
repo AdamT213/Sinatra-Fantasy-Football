@@ -12,3 +12,4 @@ use UsersController
 use LeaguesController
 use TeamsController
 use PlayersController
+use GamesController

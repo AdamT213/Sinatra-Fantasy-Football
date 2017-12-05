@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202232933) do
+ActiveRecord::Schema.define(version: 20171204232248) do
+
+  create_table "games", force: :cascade do |t|
+    t.string "winning_team_id"
+    t.string "losing_team_id"
+  end
 
   create_table "leagues", force: :cascade do |t|
     t.string "name"
@@ -25,6 +30,8 @@ ActiveRecord::Schema.define(version: 20171202232933) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
+    t.integer "wins"
+    t.integer "losses"
   end
 
   create_table "users", force: :cascade do |t|
