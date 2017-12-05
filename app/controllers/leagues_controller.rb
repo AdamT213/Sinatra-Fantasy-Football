@@ -27,6 +27,7 @@ class LeaguesController < ApplicationController
 
   get '/leagues/:id' do
     @league = League.find_by_id(params[:id])
+      session[:league_id] = @league.id
     erb :'/leagues/show_league'
   end
 
