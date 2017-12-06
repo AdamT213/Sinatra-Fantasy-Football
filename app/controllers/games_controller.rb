@@ -2,11 +2,10 @@ class GamesController < ApplicationController
 
   get '/games/new' do
     if is_logged_in?
-      if league.manager_id == current_user.id
-        erb :'/games/create_game'
+      if current_league.teams.count >= 2
+        current_league.manager_id == current_user.id ? (erb :'/games/create_game') : (redirect to '/leagues')
       else
-        redirect to '/leagues'
-      end
+        redirect to '/teams/new'
     else
       erb :index
     end
