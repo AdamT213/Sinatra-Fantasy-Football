@@ -10,6 +10,8 @@
 
 <a href= '/games/new'> Create new game </a>
 <br></br>
+<a href= '/leagues'> See more leagues </a>
+<br></br>
 <form action= '/leagues/<%= @league.id %>/delete' method= "POST">
   <input name="_method" type="hidden" value="delete">
   <input type= "submit" value= "Delete League">

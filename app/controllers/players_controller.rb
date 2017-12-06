@@ -27,7 +27,7 @@ class PlayersController < ApplicationController
   delete '/players/:id/delete' do
     if is_logged_in?
       @player = Player.find_by_id(params[:id])
-      if @player.user.id == current_user.id
+      if @player.team.user_id == current_user.id
         @player.delete
         redirect to "/teams/#{current_team.id}"
       else
