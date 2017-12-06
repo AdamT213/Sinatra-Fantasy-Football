@@ -6,6 +6,7 @@ class GamesController < ApplicationController
         current_league.manager_id == current_user.id ? (erb :'/games/create_game') : (redirect to '/leagues')
       else
         redirect to '/teams/new'
+      end
     else
       erb :index
     end
@@ -14,13 +15,13 @@ class GamesController < ApplicationController
   post '/games' do
     if !params[:winning_team_id].empty? && !params[:losing_team_id].empty?
       @game = Game.create(params)
-      @league.games << @game
+      current_league.games << @game
       @game.save
       @winning_team = Team.find_by_id(params[:winning_team_id])
       @winning_team.wins += 1
       @losing_team = Team.find_by_id(params[:losing_team_id])
       @losing_team.losses += 1
-      redirect to "/leagues/#{@league.id}"
+      redirect to "/leagues/#{current_league.id}"
     else
       redirect to '/games/new'
     end
