@@ -18,9 +18,9 @@ class GamesController < ApplicationController
       current_league.games << @game
       @game.save
       @winning_team = Team.find_by_id(params[:winning_team_id])
-      @winning_team.wins += 1
+      @winning_team.win
       @losing_team = Team.find_by_id(params[:losing_team_id])
-      @losing_team.losses += 1
+      @losing_team.lose
       redirect to "/leagues/#{current_league.id}"
     else
       redirect to '/games/new'

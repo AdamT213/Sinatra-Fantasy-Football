@@ -15,6 +15,7 @@ class TeamsController < ApplicationController
   post '/teams' do
     if !params[:name].empty?
       @team = Team.create(params)
+      @team.user_id = current_user.id
       @team.save
       session[:team_id] = @team.id
       current_league.teams << @team
